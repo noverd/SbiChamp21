@@ -1,7 +1,7 @@
 from codegame.server_message import ServerMessage
 from codegame.client_message import ClientMessage
 from stream_wrapper import StreamWrapper
-from test import MyStrategy
+from my_strategy2 import MyStrategy
 # from debug_interface import DebugInterface
 import socket
 import sys
@@ -18,7 +18,7 @@ class Runner:
         self.token = token
         self.writer.write_string(self.token)
         self.writer.write_int(0)
-        self.writer.write_int(2)
+        self.writer.write_int(4)
         self.writer.write_int(0)
         self.writer.flush()
 
