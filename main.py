@@ -19,7 +19,7 @@ class Runner:
         self.writer.write_string(self.token)
         self.writer.write_int(1)
         self.writer.write_int(0)
-        self.writer.write_int(0)
+        self.writer.write_int(2)
         self.writer.flush()
 
     def run(self):

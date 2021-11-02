@@ -12,7 +12,10 @@ class MyStrategy:
         print(f'Мой индекс - {game_r.my_index}\n'
               f'Максимальное количество летящих групп роботов одного игрока - {game_r.max_flying_worker_groups}\n'
               f'Максимальная дистанция скачка - {game_r.max_travel_distance}\n'
-              f'Максимальное количество строителей - {game_r.max_builders}')
+              f'Максимальное количество строителей - {game_r.max_builders}'
+              f'Ворекры - {type(game_r.planets[0].worker_groups)}'
+              f'')
+
 
     def build_prop(self, game_r):
         for i in BuildingType:
