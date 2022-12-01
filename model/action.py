@@ -34,10 +34,7 @@ class Action:
         for _ in range(stream.read_int()):
             buildings_element = BuildingAction.read_from(stream)
             buildings.append(buildings_element)
-        if stream.read_bool():
-            choose_specialty = Specialty(stream.read_int())
-        else:
-            choose_specialty = None
+        choose_specialty = Specialty(stream.read_int()) if stream.read_bool() else None
         return Action(moves, buildings, choose_specialty)
     
     def write_to(self, stream: StreamWrapper):

@@ -49,10 +49,7 @@ class BuildingProperties:
     def read_from(stream: StreamWrapper) -> "BuildingProperties":
         """Read BuildingProperties from input stream
         """
-        if stream.read_bool():
-            base_building = BuildingType(stream.read_int())
-        else:
-            base_building = None
+        base_building = BuildingType(stream.read_int()) if stream.read_bool() else None
         build_resources = {}
         for _ in range(stream.read_int()):
             build_resources_key = Resource(stream.read_int())
@@ -66,10 +63,7 @@ class BuildingProperties:
             work_resources_value = stream.read_int()
             work_resources[work_resources_key] = work_resources_value
         produce_worker = stream.read_bool()
-        if stream.read_bool():
-            produce_resource = Resource(stream.read_int())
-        else:
-            produce_resource = None
+        produce_resource = Resource(stream.read_int()) if stream.read_bool() else None
         produce_amount = stream.read_int()
         produce_score = stream.read_int()
         harvest = stream.read_bool()

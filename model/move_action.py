@@ -29,10 +29,7 @@ class MoveAction:
         start_planet = stream.read_int()
         target_planet = stream.read_int()
         worker_number = stream.read_int()
-        if stream.read_bool():
-            take_resource = Resource(stream.read_int())
-        else:
-            take_resource = None
+        take_resource = Resource(stream.read_int()) if stream.read_bool() else None
         return MoveAction(start_planet, target_planet, worker_number, take_resource)
     
     def write_to(self, stream: StreamWrapper):

@@ -92,10 +92,7 @@ class Game:
             building_properties_value = BuildingProperties.read_from(stream)
             building_properties[building_properties_key] = building_properties_value
         specialties_allowed = stream.read_bool()
-        if stream.read_bool():
-            view_distance = stream.read_int()
-        else:
-            view_distance = None
+        view_distance = stream.read_int() if stream.read_bool() else None
         return Game(my_index, current_tick, max_tick_count, players, planets, flying_worker_groups, max_flying_worker_groups, max_travel_distance, logistics_upgrade, production_upgrade, combat_upgrade, max_builders, building_properties, specialties_allowed, view_distance)
     
     def write_to(self, stream: StreamWrapper):
