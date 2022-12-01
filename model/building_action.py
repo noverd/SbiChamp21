@@ -21,10 +21,7 @@ class BuildingAction:
         """Read BuildingAction from input stream
         """
         planet = stream.read_int()
-        if stream.read_bool():
-            building_type = BuildingType(stream.read_int())
-        else:
-            building_type = None
+        building_type = BuildingType(stream.read_int()) if stream.read_bool() else None
         return BuildingAction(planet, building_type)
     
     def write_to(self, stream: StreamWrapper):

@@ -55,10 +55,7 @@ class Planet:
             resources_key = Resource(stream.read_int())
             resources_value = stream.read_int()
             resources[resources_key] = resources_value
-        if stream.read_bool():
-            building = Building.read_from(stream)
-        else:
-            building = None
+        building = Building.read_from(stream) if stream.read_bool() else None
         return Planet(id, x, y, harvestable_resource, worker_groups, resources, building)
     
     def write_to(self, stream: StreamWrapper):

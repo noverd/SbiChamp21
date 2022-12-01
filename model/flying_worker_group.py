@@ -45,10 +45,7 @@ class FlyingWorkerGroup:
         next_planet_arrival_tick = stream.read_int()
         next_planet = stream.read_int()
         target_planet = stream.read_int()
-        if stream.read_bool():
-            resource = Resource(stream.read_int())
-        else:
-            resource = None
+        resource = Resource(stream.read_int()) if stream.read_bool() else None
         return FlyingWorkerGroup(player_index, number, departure_tick, departure_planet, next_planet_arrival_tick, next_planet, target_planet, resource)
     
     def write_to(self, stream: StreamWrapper):

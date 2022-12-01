@@ -25,10 +25,7 @@ class Player:
         """
         team_index = stream.read_int()
         score = stream.read_int()
-        if stream.read_bool():
-            specialty = Specialty(stream.read_int())
-        else:
-            specialty = None
+        specialty = Specialty(stream.read_int()) if stream.read_bool() else None
         return Player(team_index, score, specialty)
     
     def write_to(self, stream: StreamWrapper):
